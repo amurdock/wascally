@@ -187,6 +187,12 @@ var Connection = function( options, connectionFn, channelFn ) {
 				'connect': function() {
 					this.deferUntilTransition( 'connected' );
 					this.transition( 'connecting' );
+				},
+				'acquiring': function() {
+					this.transition( 'connecting' );
+				},
+				'acquired': function() {
+					this.transition( 'connected' );
 				}
 			}
 		}
